@@ -1,0 +1,94 @@
+make it like click up but make the background dark 
+
+we will have two modes a calender just like the google calendar and acts just like the google calendar
+
+the second mode is the tasklist I set below but make it how click up made it where tou basically click on the task to access and see everything from the date created and deadline and the status and time estimate priority
+
+
+    MAKE IT LIKE CLICK UP 
+
+YOU GOT THIS
+
+GET IT DONE LIKE NOW TF ARE YOU DING 7:22pm 3/8/2025
+
+
+- create it similar to zoho projects or like click up
+
+
+
+- users 
+
+goals 
+projects 
+tasks
+
+- there will be a table displaying the task and what is listing in them and when you click on the task a litle box with the description and instructions or whatever the task asks will be displayed
+- the table will resemble almost a excel table
+- when you click on the task name it will have that little popup where you see the description and what not with the deadline being in the top right corner of the little description box 
+- 
+                                                                        edit
+                                             + add project     + task 
+
+
+Project name - completion percentage - deadline               ( edit  button )   
+task              description      status        deadline     ( edit  button )
+task              description      status        deadline     ( edit  button )
+task              description      status        deadline     ( edit  button )
+task              description      status        deadline     ( edit  button )
+task              description      status        deadline     ( edit  button )
+task              description      status        deadline     ( edit  button )
+
+
+
+basic idea of how it will look 
+
+
+- user schema 
+     uuid
+     username
+     first name
+     last name
+     email
+     password
+     created date
+     modified date 
+    
+- project 
+    userid 
+    title
+    description 
+    deadline
+    completed
+    created at
+    modified
+
+- tasks 
+    project id
+    user id not null
+    title
+    description
+    deadeline
+    completed 
+    created at 
+    modified at
+
+
+the start date and the end date will be forms in the react component and we will have to build it out to display in the middle of the screen and blur everything else, 
+-  the form will be formatted in mm-dd-yyyy
+or how the rest of the world does it idk and i dont really care lol
+
+- we will have to convert that form into the date 
+
+literally look at the click up website as you are doing
+
+for the times I will have to set them up but increments of 5 from 12 am to 12 am 
+a whole 24 hours going in increments of 5 minutes rather than 30 minutes
+
+we will use cache to store random guests data and then when they sign in the cache is deleted so if user session is true delete cache 
+
+
+make a calendar with a random date 
+
+
+I would have to pass in the auth token in the header 
+fetch the user at sign in and then pass it as a outlet context  
