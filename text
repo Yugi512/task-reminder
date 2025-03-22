@@ -92,3 +92,6 @@ make a calendar with a random date
 
 I would have to pass in the auth token in the header 
 fetch the user at sign in and then pass it as a outlet context  
+
+
+background should be standard among all the pages and it should be the floating gradient background and then we should figure out how to make the background for the sign and sign up different but once everything is all done

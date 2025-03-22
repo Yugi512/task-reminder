@@ -1,0 +1,430 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+html,
+body {
+  @apply bg-white dark:bg-gray-950;
+
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  }
+}
+
+.grayish-misty-blue{
+  background-color: #b7cfdc
+}
+
+.blue-gray{
+  background-color: rgb(217, 228, 236);
+}
+
+.dark-blue{
+  background-color: rgb(12, 45, 72);
+}
+
+.midnight-blue{
+  background-color: rgb(46, 84, 120);
+}
+
+.baby-blue{
+  background-color: #c3e0e5;
+}
+
+.navy-blue{
+  background-color: rgb(32, 55, 77);
+}
+
+.blue-grotto{
+  background-color: rgb(86, 168, 219);
+}
+
+.root-home{
+  display: flex;
+}
+
+.home-div {
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  position: absolute;
+  box-sizing: border-box;
+  grid-template-columns: auto ;
+  color: #010f18;
+  opacity: 1;
+  text-shadow: 1px 1px rgba(0,0,0,0.1);
+}
+ 
+.nav-bar{
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;  
+  margin-top: 25px;
+
+  > h1{
+    margin-left: 30px;
+  }
+}
+
+.user-buttons{
+  display: grid;
+  grid-template-columns: auto auto;
+  
+  .prof-button{
+    margin-right: 40px;
+  }
+}
+
+.project-tab{ 
+  z-index: 100;
+}
+
+.task-tab{ 
+  z-index: 100;
+}
+
+.calendar-div{
+  z-index: 100;
+}
+
+
+/* background */
+:root {
+  --color-bg1: rgb(197, 233, 240);
+  --color-bg2: rgb(4, 36, 63);
+  --color1: 86, 168, 219;
+  --color2: 217, 228, 236;
+  --color3: 183, 207, 220;
+  --color4: 46, 84, 120;
+  --color5: 32, 55, 77;
+  --color-interactive: 195, 224, 229;
+  --circle-size: 80%;
+  --blending: hard-light;
+}
+
+@keyframes moveInCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveVertical {
+  0% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes moveHorizontal {
+  0% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+  50% {
+    transform: translateX(50%) translateY(10%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+}
+
+
+.gradient-bg {
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  overflow: hidden;
+  background: linear-gradient(75deg, var(--color-bg1), var(--color-bg2));
+  top: 0;
+  left: 0;
+
+  .gradients-container {
+    filter: url(#goo) blur(15px) ;
+    width: 100%;
+    height: 100%;
+  }
+
+  .g1 {
+    position: absolute;
+    background: radial-gradient(circle at center, rgba(var(--color1), 0.8) 0, rgba(var(--color1), 0) 50%) no-repeat;
+    mix-blend-mode: var(--blending);
+
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+
+    transform-origin: center center;
+    animation: moveVertical 30s ease infinite;
+
+    opacity: 1;
+  }
+
+  .g2 {
+    position: absolute;
+    background: radial-gradient(circle at center, rgba(var(--color2), 0.8) 0, rgba(var(--color2), 0) 50%) no-repeat;
+    mix-blend-mode: var(--blending);
+
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+
+    transform-origin: calc(50% - 400px);
+    animation: moveInCircle 20s reverse infinite;
+
+    opacity: 1;
+  }
+
+  .g3 {
+    position: absolute;
+    background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 50%) no-repeat;
+    mix-blend-mode: var(--blending);
+
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2 + 200px);
+    left: calc(50% - var(--circle-size) / 2 - 500px);
+
+    transform-origin: calc(50% + 400px);
+    animation: moveInCircle 40s linear infinite;
+
+    opacity: 1;
+  }
+
+  .g4 {
+    position: absolute;
+    background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 50%) no-repeat;
+    mix-blend-mode: var(--blending);
+
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+
+    transform-origin: calc(50% - 200px);
+    animation: moveHorizontal 40s ease infinite;
+
+    opacity: 0.7;
+  }
+
+  .g5 {
+    position: absolute;
+    background: radial-gradient(circle at center, rgba(var(--color5), 0.8) 0, rgba(var(--color5), 0) 50%) no-repeat;
+    mix-blend-mode: var(--blending);
+
+    width: calc(var(--circle-size) * 2);
+    height: calc(var(--circle-size) * 2);
+    top: calc(50% - var(--circle-size));
+    left: calc(50% - var(--circle-size));
+
+    transform-origin: calc(50% - 800px) calc(50% + 200px);
+    animation: moveInCircle 20s ease infinite;
+
+    opacity: 1;
+  }
+
+}
+
+
+/* Auth page */
+
+.auth-page{
+  display: grid;
+  box-sizing: border-box;
+  grid-template-columns: auto ;
+}
+
+.input-text{
+  color: #14202e;
+}
+
+/* Sign up page */
+
+.sign-up-page{
+  z-index: 10;
+  display: grid;
+  position:sticky;
+  box-sizing: border-box;
+  grid-template-columns: auto;
+  margin-top: 50px;
+  justify-content: center;
+  color: #bfd7ed;
+  opacity: 1;
+  text-shadow: 1px 1px rgba(0,0,0,0.1);
+}
+
+.sign-up-div{
+  width: 450px;
+  height: 675px;
+  background-color: #14202e;
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  border-radius: 50px;
+  box-shadow:  -11px 11px 25px #bfd7ed, 11px -11px 25px #c3e0e5;
+  > h1{
+    justify-content: center;
+    text-align: center;
+    font-size: 32px;
+    margin-top: 35px;
+  }
+
+  > form {
+    display: grid;
+    width: 200px;
+    height: 475px;
+    > button{
+      text-transform: uppercase;
+      outline: 0;
+      width: 100%;
+      border: 0;
+      border-radius: 5px;
+      padding: 15px;
+      color: #c3e0e5;
+      font-size: 14px;
+      -webkit-transition: all 0.3 ease;
+      transition: all 0.3 ease;
+      cursor: pointer;
+    }
+
+    > button:active{
+      background-color: #bfd7ed;
+      color: #14202e;
+    }
+  }
+  
+  > p{
+    margin-top: 10px;
+  }
+  
+}
+
+.sign-up-password{
+  display: grid;
+  > input{
+    color: #14202e;
+    width: 250px;
+    height: 45px;
+    background-color: #bfd7ed;
+    border-radius: 10px;
+    text-indent: 10px;
+  }
+}
+
+.auth-input{
+  display: grid;
+  margin-top: 10px;
+  > input{
+    margin-top: 5px;
+    color: #14202e;
+    width: 250px;
+    height: 45px;
+    background-color: #bfd7ed;
+    border-radius: 10px;
+    text-indent: 10px;
+  }
+}
+
+
+/* Sign in page */
+
+.sign-in-page{
+  z-index: 10;
+  display: grid;
+  position:sticky;
+  box-sizing: border-box;
+  grid-template-columns: auto;
+  margin-top: 200px;
+  justify-content: center;
+  color: #bfd7ed;
+  opacity: 1;
+  text-shadow: 1px 1px rgba(0,0,0,0.1);
+}
+
+.auth-div{
+  width: 400px;
+  height: 450px;
+  background-color: #14202e;
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  border-radius: 10%;
+  box-shadow:  -11px 11px 25px #bfd7ed, 11px -11px 25px #c3e0e5;
+  > h1{
+    justify-content: center;
+    text-align: center;
+    font-size: 32px;
+    margin-top: 35px;
+  }
+
+  > form {
+    display: grid;
+    width: 200px;
+    height: 250px;
+    
+    > button{
+      text-transform: uppercase;
+      outline: 0;
+      width: 100%;
+      border: 0;
+      border-radius: 5px;
+      padding: 15px;
+      color: #c3e0e5;
+      font-size: 14px;
+      -webkit-transition: all 0.3 ease;
+      transition: all 0.3 ease;
+      cursor: pointer;
+    }
+
+    > button:active{
+      background-color: #bfd7ed;
+      color: #14202e;
+    }
+  }
+}
+
+.auth-email{
+  display: grid;
+
+  > input{
+    margin-top: 10px;
+    color: #14202e;
+    width: 250px;
+    height: 45px;
+    background-color: #bfd7ed;
+    border-radius: 10px;
+    text-indent: 10px;
+  }
+}
+
+.auth-password{
+  display: grid;
+  margin-top: 10px;
+  > input{
+    margin-top: 10px;
+    color: #14202e;
+    width: 250px;
+    height: 45px;
+    background-color: #bfd7ed;
+    border-radius: 10px;
+    text-indent: 10px;
+  }
+}
+
+/* profile page */
