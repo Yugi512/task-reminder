@@ -95,3 +95,37 @@ fetch the user at sign in and then pass it as a outlet context
 
 
 background should be standard among all the pages and it should be the floating gradient background and then we should figure out how to make the background for the sign and sign up different but once everything is all done
+
+
+- 3/26/2025 
+    So the home sign in works and redirects to the homepage, but when I try to access the home page directly after I am redirected to the verify email page, and thats weird,
+    I think it has to do with the isVerified variable in authStore I need to find a way to clean up the code so that I can authenticate and send the user and email,
+    but that would mean I have to rewrite most of the functions and refactor the code so that I can make sure it all looks clean
+
+    -- three things I can do at this moment
+
+    - restart but instead of adding the emails and stuff I just use the auth check and what not basically everything except the email
+    - instead of restarting I just clean up the code and remove the email and stuff because Im not gonna incorporate it into the code
+    - figure out a way to make it so that the isVerified works because that seems to be the main issue 
+
+    easier to refactor and just get rid of the emails and stuff of that sort honestly 
+
+
+    -- 4:13am 3/26/25 it was easier just to get reid of the emails :3 <3
+
+we need to create the projects and tasks fetch calls(basically creat a projectStore and taskStore)
+
+so the user is logined in and we get their info off rip on the home page,
+we take the id of user and then apply it to all the projects and tasks that they create 
+
+create the line tree, with the beginning of the tree being the project and the branches being the task, the tasks and projects have ids
+
+we can do that but we can seperate it in tabs like clickup 
+
+or have to seperate ones one to create projects and the other to create tasks but as soon as we create a project we basically make it into a selection option in a drop down for the tasks 
+
+we will have to create the logic that basically tallies all the total tasks and projects and have the comepletion of all of it
+
+tab form seems approriate for this one honestly the line will seem complicated
+
+-- tab for home page and profile will show the tree with completion and a line across all the tasks and projects that have been completed ;3 

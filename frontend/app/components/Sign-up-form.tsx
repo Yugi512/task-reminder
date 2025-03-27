@@ -1,7 +1,9 @@
 "use client"
 
-import { error } from "console";
-import { useState} from "react";
+import { useEffect, useState} from "react";
+import { useAuthStore } from "store/authStore";
+import { useNavigate } from "react-router";
+import toast, { Toaster } from 'react-hot-toast';
 
 const SignUpForm = () => {
     const [newUser, setUser] = useState({
@@ -11,6 +13,13 @@ const SignUpForm = () => {
         email: "",
         password: ""
     });
+    const {isAuthenticated,checkAuth, signup, error} = useAuthStore()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        checkAuth()
+        navigate('/')
+    },[checkAuth])
 
     function handleChange(event: any){
         setUser({
@@ -19,17 +28,24 @@ const SignUpForm = () => {
         })
     }
 
-    function handleSubmit(e: any){
+    async function handleSubmit(e: any){
         e.preventDefault()
-        fetch(`http://localhost:5500/api/v1/auth/sign-up`,{
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(newUser)
-        })
-        .catch(error => console.error("Error submitting information, sign in form: ",error))
+        try{
+            await signup(newUser.firstName,newUser.lastName,newUser.username,newUser.email,newUser.password)
+            navigate('/')
+        }
+        catch(err: any){
+            if(err.response.status === 409){
+                navigate('/sign-in')
+            } else if(err.response.status === 500) {
+                toast.error('Error: All input fields must be filled')
+            }
+        }
     }
+
+    // if(isAuthenticated && isVerified){
+    //     toast.error("User already exists, sign in")
+    // }
 
     return (
         <div className="sign-up-div">
@@ -92,12 +108,13 @@ const SignUpForm = () => {
                     ></input>
                 </div>
                 <br />
-                <button>login</button>
+                <button>Sign up</button>
             </form>
             <p className="auth-p"> 
-                Don't have an account?
-                <a href="/sign-up"> Sign up </a>
+                Already have an account?
+                <a href="/sign-up"> Sign in </a>
             </p>
+            <Toaster />
         </div>
     )
 }

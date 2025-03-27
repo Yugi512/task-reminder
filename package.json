@@ -4,7 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"development": "nodemon backend/app.js"
+		"development": "nodemon backend/app.js",
+		"start": "node backend/app.js",
+		"build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
 	},
 	"keywords": [],
 	"author": "",
@@ -14,6 +16,7 @@
 		"@arcjet/node": "^1.0.0-beta.4",
 		"bcryptjs": "^3.0.2",
 		"cookie-parser": "^1.4.7",
+		"cors": "^2.8.5",
 		"crypto": "^1.0.1",
 		"dotenv": "^16.4.7",
 		"express": "^4.21.2",

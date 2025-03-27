@@ -1,12 +1,20 @@
 "use client"
 
-import { useState} from "react";
+import { useState, useEffect} from "react";
+import { useNavigate } from "react-router";
+
+import { useAuthStore } from "store/authStore";
+import toast, { Toaster } from 'react-hot-toast';
 
 const SignInForm = () => {
     const [newUser, setUser] = useState({
         email: "",
         password: ""
     });
+    const {signin, isLoading, isAuthenticated,checkAuth} = useAuthStore()
+
+    const navigate = useNavigate()
+
 
     function handleChange(event: any){
         setUser({
@@ -15,17 +23,22 @@ const SignInForm = () => {
         })
     }
 
-    function handleSubmit(e: any){
+    async function handleSubmit(e: any){
         e.preventDefault()
-        fetch(`http://localhost:5173/api/v1/auth/sign-in`,{
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(newUser)
-        })
-        .catch(error => console.error("Error submitting information, sign in form: ",error))
+        try{
+            await signin(newUser.email, newUser.password)
+        }
+        catch(error){
+            toast.error('Please make sure to sign in a valid account')
+        }
+        
     }
+    if(isLoading) return <p>Loading...</p>
+
+    useEffect(() => {
+            checkAuth()
+            navigate('/')
+    },[checkAuth])
 
     return (
         <div className="auth-div">
@@ -61,6 +74,7 @@ const SignInForm = () => {
                 Don't have an account?
                 <a href="/sign-up"> Sign up </a>
             </p>
+            <Toaster />
         </div>
     )
 }
